@@ -17,6 +17,7 @@ public class Composite extends Component {
     }
 
     public void add(Component c) {
+        System.out.println("Handling composite");
         components.add(c);
     }
 }

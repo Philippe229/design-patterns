@@ -1,7 +1,12 @@
+import adapter.Adaptee;
+import adapter.AdapteeToTargetAdapter;
+import adapter.Target;
 import composite.Component;
 import composite.Composite;
 import composite.Leaf;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -20,6 +25,9 @@ public class Main {
                 case 1:
                     composite();
                     break;
+                case 2:
+                    adapter();
+                    break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
             }
@@ -36,8 +44,17 @@ public class Main {
         Composite composite = new Composite();
         composite.add(leaf);
 
-        ((Component)leaf).operation();
-        ((Component)composite).operation();
+        List<Component> componentList = new ArrayList<>();
+        componentList.add(leaf);
+        componentList.add(composite);
+
+        for (Component component : componentList)
+            component.operation();
+    }
+
+    private static void adapter() {
+        Target target = new AdapteeToTargetAdapter(new Adaptee());
+        target.request();
     }
 
 }
