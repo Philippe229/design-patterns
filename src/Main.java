@@ -4,6 +4,8 @@ import adapter.Target;
 import composite.Component;
 import composite.Composite;
 import composite.Leaf;
+import decorator.ComponentDecorator;
+import decorator.ConcreteComponent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,9 @@ public class Main {
                     break;
                 case 2:
                     adapter();
+                    break;
+                case 3:
+                    decorator();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -55,6 +60,13 @@ public class Main {
     private static void adapter() {
         Target target = new AdapteeToTargetAdapter(new Adaptee());
         target.request();
+    }
+
+    private static void decorator() {
+        decorator.Component component = new ConcreteComponent();
+        decorator.Component decoratedComponent = new ComponentDecorator(new ConcreteComponent());
+        component.operation();
+        decoratedComponent.operation();
     }
 
 }
