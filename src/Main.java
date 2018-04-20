@@ -1,6 +1,10 @@
 import adapter.Adaptee;
 import adapter.AdapteeToTargetAdapter;
 import adapter.Target;
+import bridge.Employee;
+import bridge.FullTimeEmployee;
+import bridge.HourlyPay;
+import bridge.Pay;
 import composite.Component;
 import composite.Composite;
 import composite.Leaf;
@@ -32,6 +36,9 @@ public class Main {
                     break;
                 case 3:
                     decorator();
+                    break;
+                case 4:
+                    bridge();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -67,6 +74,12 @@ public class Main {
         decorator.Component decoratedComponent = new ComponentDecorator(new ConcreteComponent());
         component.operation();
         decoratedComponent.operation();
+    }
+
+    private static void bridge() {
+        Pay hourlyPay = new HourlyPay();
+        Employee fullTimeEmployee = new FullTimeEmployee(hourlyPay);
+        fullTimeEmployee.salary();
     }
 
 }
