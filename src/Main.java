@@ -10,6 +10,7 @@ import composite.Composite;
 import composite.Leaf;
 import decorator.ComponentDecorator;
 import decorator.ConcreteComponent;
+import singleton.Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,9 @@ public class Main {
                     break;
                 case 4:
                     bridge();
+                    break;
+                case 5:
+                    singleton();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -80,6 +84,11 @@ public class Main {
         Pay hourlyPay = new HourlyPay();
         Employee fullTimeEmployee = new FullTimeEmployee(hourlyPay);
         fullTimeEmployee.salary();
+    }
+
+    private static void singleton() {
+        Singleton singleton = Singleton.getInstance();
+        singleton.operation();
     }
 
 }
