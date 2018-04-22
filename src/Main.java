@@ -10,6 +10,9 @@ import composite.Composite;
 import composite.Leaf;
 import decorator.ComponentDecorator;
 import decorator.ConcreteComponent;
+import observer.ConcreteObserver;
+import observer.ConcreteSubject;
+import observer.Observer;
 import singleton.Singleton;
 
 import java.util.ArrayList;
@@ -43,6 +46,9 @@ public class Main {
                     break;
                 case 5:
                     singleton();
+                    break;
+                case 6:
+                    observer();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -89,6 +95,17 @@ public class Main {
     private static void singleton() {
         Singleton singleton = Singleton.getInstance();
         singleton.operation();
+    }
+
+    private static void observer() {
+        ConcreteSubject concreteSubject = new ConcreteSubject();
+        Observer observer1 = new ConcreteObserver(concreteSubject);
+        Observer observer2 = new ConcreteObserver(concreteSubject);
+        concreteSubject.setMessage("Hello world");
+
+        concreteSubject.detach(observer1);
+        concreteSubject.detach(observer2);
+        concreteSubject.setMessage("This message should not display because there are no observers.");
     }
 
 }
