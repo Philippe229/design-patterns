@@ -14,6 +14,10 @@ import observer.ConcreteObserver;
 import observer.ConcreteSubject;
 import observer.Observer;
 import singleton.Singleton;
+import visitor.ConcreteElement;
+import visitor.ConcreteVisitor;
+import visitor.Element;
+import visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +53,9 @@ public class Main {
                     break;
                 case 6:
                     observer();
+                    break;
+                case 7:
+                    visitor();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -106,6 +113,12 @@ public class Main {
         concreteSubject.detach(observer1);
         concreteSubject.detach(observer2);
         concreteSubject.setMessage("This message should not display because there are no observers.");
+    }
+
+    private static void visitor() {
+        Element element = new ConcreteElement();
+        Visitor visitor = new ConcreteVisitor();
+        element.accept(visitor);
     }
 
 }
