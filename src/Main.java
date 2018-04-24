@@ -14,6 +14,8 @@ import observer.ConcreteObserver;
 import observer.ConcreteSubject;
 import observer.Observer;
 import singleton.Singleton;
+import templatemethod.AbstractClass;
+import templatemethod.ConcreteClass;
 import visitor.ConcreteElement;
 import visitor.ConcreteVisitor;
 import visitor.Element;
@@ -56,6 +58,9 @@ public class Main {
                     break;
                 case 7:
                     visitor();
+                    break;
+                case 8:
+                    templateMethod();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -119,6 +124,11 @@ public class Main {
         Element element = new ConcreteElement();
         Visitor visitor = new ConcreteVisitor();
         element.accept(visitor);
+    }
+
+    private static void templateMethod() {
+        AbstractClass abstractClass = new ConcreteClass();
+        abstractClass.templateMethod();
     }
 
 }
