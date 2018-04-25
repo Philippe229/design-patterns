@@ -8,6 +8,10 @@ import bridge.Pay;
 import chainofresponsibility.ConcreteHandler1;
 import chainofresponsibility.ConcreteHandler2;
 import chainofresponsibility.Handler;
+import command.Command;
+import command.ConcreteCommand;
+import command.Invoker;
+import command.Receiver;
 import composite.Component;
 import composite.Composite;
 import composite.Leaf;
@@ -67,6 +71,9 @@ public class Main {
                     break;
                 case 9:
                     chainOfResponsibility();
+                    break;
+                case 10:
+                    command();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -144,4 +151,17 @@ public class Main {
         handler1.handle();
     }
 
+    private static void command() {
+        Receiver receiver = new Receiver();
+        Command command = new ConcreteCommand(receiver);
+
+        Invoker invoker = new Invoker();
+        invoker.addCommand(command);
+
+        System.out.println("Possibly asynchronous call to commands:");
+        invoker.executeCommands();
+
+        System.out.println("Extension:");
+        invoker.undoCommand();
+    }
 }
