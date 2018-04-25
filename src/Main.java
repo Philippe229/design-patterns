@@ -5,6 +5,9 @@ import bridge.Employee;
 import bridge.FullTimeEmployee;
 import bridge.HourlyPay;
 import bridge.Pay;
+import chainofresponsibility.ConcreteHandler1;
+import chainofresponsibility.ConcreteHandler2;
+import chainofresponsibility.Handler;
 import composite.Component;
 import composite.Composite;
 import composite.Leaf;
@@ -61,6 +64,9 @@ public class Main {
                     break;
                 case 8:
                     templateMethod();
+                    break;
+                case 9:
+                    chainOfResponsibility();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -129,6 +135,13 @@ public class Main {
     private static void templateMethod() {
         AbstractClass abstractClass = new ConcreteClass();
         abstractClass.templateMethod();
+    }
+
+    private static void chainOfResponsibility() {
+        Handler handler1 = new ConcreteHandler1();
+        Handler handler2 = new ConcreteHandler2();
+        handler1.setNext(handler2);
+        handler1.handle();
     }
 
 }
