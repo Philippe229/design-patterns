@@ -17,6 +17,8 @@ import composite.Composite;
 import composite.Leaf;
 import decorator.ComponentDecorator;
 import decorator.ConcreteComponent;
+import factorymethod.ConcreteCreator;
+import factorymethod.Creator;
 import observer.ConcreteObserver;
 import observer.ConcreteSubject;
 import observer.Observer;
@@ -74,6 +76,9 @@ public class Main {
                     break;
                 case 10:
                     command();
+                    break;
+                case 11:
+                    factoryMethod();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -163,5 +168,10 @@ public class Main {
 
         System.out.println("Extension:");
         invoker.undoCommand();
+    }
+
+    private static void factoryMethod() {
+        Creator creator = new ConcreteCreator();
+        creator.anOperation();
     }
 }
