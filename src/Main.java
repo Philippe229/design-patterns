@@ -5,6 +5,9 @@ import bridge.Employee;
 import bridge.FullTimeEmployee;
 import bridge.HourlyPay;
 import bridge.Pay;
+import builder.Builder;
+import builder.ConcreteBuilder;
+import builder.Product;
 import chainofresponsibility.ConcreteHandler1;
 import chainofresponsibility.ConcreteHandler2;
 import chainofresponsibility.Handler;
@@ -79,6 +82,9 @@ public class Main {
                     break;
                 case 11:
                     factoryMethod();
+                    break;
+                case 12:
+                    builder();
                     break;
                 default:
                     System.out.println("Number does not specify any design pattern.");
@@ -174,4 +180,14 @@ public class Main {
         Creator creator = new ConcreteCreator();
         creator.anOperation();
     }
+
+    private static void builder() {
+        Builder builder = new ConcreteBuilder();
+        Product product = builder.buildStepA()
+                .buildStepB()
+                .getProduct();
+        System.out.println(product.getFieldA());
+        System.out.println(product.getFieldB());
+    }
+
 }
